@@ -1,0 +1,55 @@
+buildscript {
+	ext {
+		kotlinVersion = '1.0.6'
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+	}
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'kotlin'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
+	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("joda-time:joda-time")
+	compile("com.google.guava:guava:20.0")
+	compile("org.springframework.boot:spring-boot-devtools")
+	compile("org.projectlombok:lombok:1.16.2")
+	compile("com.google.code.gson:gson:2.8.0")
+	compile("org.apache.httpcomponents:httpclient:4.5.2")
+	compile "org.igniterealtime.smack:smack-core:4.0.4"
+	compile "org.igniterealtime.smack:smack-tcp:4.0.4"
+	compile "com.googlecode.json-simple:json-simple:1.1"
+	runtime('com.h2database:h2:1.4.186')
+	runtime('mysql:mysql-connector-java:5.1.35')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile("org.jadira.usertype:usertype.jodatime:2.0.1")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
